@@ -9,13 +9,13 @@ import UIKit
 
 class TabBarController: UITabBarController {
     func fillUsersArray() {
-    
-//        let user1FotoArray = [UIImage(named: "owl")!, UIImage(named: "petr")!]
-//        let user1 = User(name: "petr", age: 19, avatar: nil, fotoArray: user1FotoArray)
-//
-//        DataStorage.shared.usersArray.append(user1)
         
-
+        //        let user1FotoArray = [UIImage(named: "owl")!, UIImage(named: "petr")!]
+        //        let user1 = User(name: "petr", age: 19, avatar: nil, fotoArray: user1FotoArray)
+        //
+        //        DataStorage.shared.usersArray.append(user1)
+        
+        
         
         let user1 = setNewUser(userNumber: 1, name: "Steve Jobs", age: 56)
         let user2 = setNewUser(userNumber: 2, name: "MF DOOM", age: 49)
@@ -32,7 +32,7 @@ class TabBarController: UITabBarController {
         let group4 = Group(name: "AirTag", description: "Features AirTag", groupImage: UIImage(named: "airtag"))
         
         let groupArray = [group1, group2, group3, group4]
-    
+        
         
         DataStorage.shared.usersArray = userArray
         DataStorage.shared.allGroup = groupArray 
@@ -40,19 +40,19 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-          fillUsersArray()
+        fillUsersArray()
         // Do any additional setup after loading the view.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

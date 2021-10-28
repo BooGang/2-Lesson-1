@@ -2,18 +2,18 @@
 //  FriendsTableViewCell.swift
 //  2 Lesson 1
 //
-//  Created by Air on 21.04.2021.
+//  Created by Air on 29.04.2021.
 //
 
 import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
 
-    @IBInspectable weak var twoImageView: UIImageView!
+    static let identifier = "FriendsTableViewCell"
+    @IBOutlet weak var twoImageView: UIImageView!
     @IBOutlet weak var LabelUp: UILabel!
     @IBOutlet weak var LabelDown: UILabel!
     @IBOutlet weak var myBlackView: UIView!
-    
     @IBInspectable var shadowOpacity: Float = 0.9
     @IBInspectable var shadowColor: UIColor = UIColor.black //.cgColor
     @IBInspectable var shadowRadius: CGFloat = 10
@@ -40,7 +40,7 @@ class FriendsTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        clearCell()
+    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -53,8 +53,7 @@ class FriendsTableViewCell: UITableViewCell {
         LabelUp.text = user.name
         
         if let age = user.age {
-            LabelDown
-                .text = String(age) + " лет"
+            LabelDown.text = String(age) + " лет"
         }
         
         if let image = user.avatar {

@@ -11,6 +11,7 @@ class FriendsTableViewController: UITableViewController {
     let friendsTableViewCellReuse = "FriendsTableViewCell"
     let fromFriendsToFotoSegue = "fromFriendsToFoto"
     
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()

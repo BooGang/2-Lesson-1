@@ -7,17 +7,31 @@
 
 import UIKit
 
-class AllGroupController: UITableViewController {
-    let friendsTableViewCellReuse = "FriendsTableViewCell"
+class AllGroupController: UITableViewController, UISearchBarDelegate {
     
+    var filterGroups: [Group] = []
+    var isSearching: Bool = false
+    
+    @IBOutlet weak var SearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.tableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: friendsTableViewCellReuse)
-        
+       
+        tableView.register(UINib(nibName: "FriendsTableViewCell", bundle: nil), forCellReuseIdentifier: FriendsTableViewCell.identifier)
+        SearchBar.delegate = self
     }
-
+//MARK - searchBarDelegate
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        isSearching = (searchText.first != nil)
+        
+        filter(groups: DataStorage.shared.allGroup, searchText: searchText)
+    }
+    
+    func filter(groups: [Group], searchText: String) {
+        filterGroups = DataStorage.shared.allGroup.filter {$0.name.contains(searchText)}
+        tableView.reloadData()
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -27,14 +41,23 @@ class AllGroupController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return DataStorage.shared.allGroup.count
+        
+        if isSearching {
+            return filterGroups.count
+        } else {
+            return DataStorage.shared.allGroup.count
+        }
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: friendsTableViewCellReuse, for: indexPath) as? FriendsTableViewCell else {return UITableViewCell()}
-
-        cell.configureWithGroup(group: DataStorage.shared.allGroup[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FriendsTableViewCell.identifier, for: indexPath) as? FriendsTableViewCell else {return UITableViewCell()}
+        
+        if isSearching {
+            cell.configureWithGroup(group: filterGroups[indexPath.row])
+        } else {
+            cell.configureWithGroup(group: DataStorage.shared.allGroup[indexPath.row])
+        }
 
         return cell
     }
@@ -62,64 +85,5 @@ class AllGroupController: UITableViewController {
         if !isEnableItem {
             DataStorage.shared.myFavoriteGroup.append(group)
         }
-        
-       // self.navigationController?.popViewController(animated: true)
     }
-    
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
