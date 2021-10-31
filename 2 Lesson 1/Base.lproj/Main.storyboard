@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -61,7 +61,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Join with Account VK"/>
                                 <connections>
-                                    <segue destination="cpl-u8-QDT" kind="presentation" modalPresentationStyle="fullScreen" id="y46-8c-Gez"/>
+                                    <segue destination="5g9-Ct-wkY" kind="presentation" modalPresentationStyle="fullScreen" id="y46-8c-Gez"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -146,21 +146,70 @@
             </objects>
             <point key="canvasLocation" x="-246" y="-86"/>
         </scene>
-        <!--View Controller-->
+        <!--Auth View Controller-->
         <scene sceneID="1ZO-68-ngE">
             <objects>
-                <viewController id="cpl-u8-QDT" sceneMemberID="viewController">
+                <viewController id="cpl-u8-QDT" customClass="AuthViewController" customModule="__Lesson_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5c1-AW-KPu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" customUserAgent="" translatesAutoresizingMaskIntoConstraints="NO" id="APt-lg-5pS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="g58-Uw-VuQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="APt-lg-5pS" secondAttribute="bottom" id="HDj-xv-GkL"/>
+                            <constraint firstItem="APt-lg-5pS" firstAttribute="top" secondItem="5c1-AW-KPu" secondAttribute="top" id="NCI-WT-DO2"/>
+                            <constraint firstItem="APt-lg-5pS" firstAttribute="trailing" secondItem="g58-Uw-VuQ" secondAttribute="trailing" id="rmm-q0-JHt"/>
+                            <constraint firstItem="APt-lg-5pS" firstAttribute="leading" secondItem="g58-Uw-VuQ" secondAttribute="leading" id="xZo-H4-fFN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZHP-Ac-RJH"/>
+                    <connections>
+                        <outlet property="webView" destination="APt-lg-5pS" id="gfg-2G-w4j"/>
+                        <segue destination="EQc-pl-D0L" kind="presentation" identifier="fromVKLoginToFriedns" modalPresentationStyle="fullScreen" id="bnx-qR-3fa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="of4-nx-Jz6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-246" y="741"/>
+            <point key="canvasLocation" x="663.768115942029" y="740.625"/>
+        </scene>
+        <!--Friends View Controller-->
+        <scene sceneID="gXU-jM-FBy">
+            <objects>
+                <tableViewController id="EQc-pl-D0L" customClass="VKFriendsViewController" customModule="__Lesson_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="TN3-Tc-VbY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pI6-Vh-aIQ">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pI6-Vh-aIQ" id="Qtn-bZ-JLs">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="EQc-pl-D0L" id="eyp-aS-EiP"/>
+                            <outlet property="delegate" destination="EQc-pl-D0L" id="kza-qk-7uI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Pkz-Mc-f7w"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MbG-Xv-eh7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1543" y="749"/>
         </scene>
         <!--My groups-->
         <scene sceneID="tkL-ab-jPg">
@@ -197,7 +246,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Wb-Re-U9Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2300" y="222"/>
+            <point key="canvasLocation" x="3208.6956521739135" y="221.65178571428569"/>
         </scene>
         <!--Groups-->
         <scene sceneID="DjR-dn-On9">
@@ -236,7 +285,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZw-t4-mKX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3236" y="222"/>
+            <point key="canvasLocation" x="4144.927536231884" y="221.65178571428569"/>
         </scene>
         <!--My Groups-->
         <scene sceneID="gVl-rI-Q8z">
@@ -253,7 +302,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qx0-8c-Wsf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1410" y="222"/>
+            <point key="canvasLocation" x="2318.840579710145" y="221.65178571428569"/>
         </scene>
         <!--News-->
         <scene sceneID="rLL-XF-713">
@@ -404,6 +453,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W4p-59-4iL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="571" y="-86"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8OE-7p-K23">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5g9-Ct-wkY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IJn-7n-Yai">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cpl-u8-QDT" kind="relationship" relationship="rootViewController" id="wIb-JE-yzW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nyO-xl-HbD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-246.37681159420291" y="740.625"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="systemBlueColor"/>
