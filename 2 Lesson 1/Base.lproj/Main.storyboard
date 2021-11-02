@@ -175,14 +175,14 @@
                     <navigationItem key="navigationItem" id="ZHP-Ac-RJH"/>
                     <connections>
                         <outlet property="webView" destination="APt-lg-5pS" id="gfg-2G-w4j"/>
-                        <segue destination="EQc-pl-D0L" kind="presentation" identifier="fromVKLoginToFriedns" modalPresentationStyle="fullScreen" id="bnx-qR-3fa"/>
+                        <segue destination="soR-iO-VfK" kind="presentation" identifier="fromVKLoginToFriedns" modalPresentationStyle="fullScreen" id="bnx-qR-3fa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="of4-nx-Jz6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="663.768115942029" y="740.625"/>
+            <point key="canvasLocation" x="-152" y="870"/>
         </scene>
-        <!--Friends View Controller-->
+        <!--Friends-->
         <scene sceneID="gXU-jM-FBy">
             <objects>
                 <tableViewController id="EQc-pl-D0L" customClass="VKFriendsViewController" customModule="__Lesson_1" customModuleProvider="target" sceneMemberID="viewController">
@@ -205,11 +205,12 @@
                             <outlet property="delegate" destination="EQc-pl-D0L" id="kza-qk-7uI"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Friends" image="person" catalog="system" landscapeImage="person" selectedImage="person" id="OjI-ed-jL4"/>
                     <navigationItem key="navigationItem" id="Pkz-Mc-f7w"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MbG-Xv-eh7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1543" y="749"/>
+            <point key="canvasLocation" x="1409" y="538"/>
         </scene>
         <!--My groups-->
         <scene sceneID="tkL-ab-jPg">
@@ -246,7 +247,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Wb-Re-U9Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3208.6956521739135" y="221.65178571428569"/>
+            <point key="canvasLocation" x="4118.840579710145" y="221.65178571428569"/>
         </scene>
         <!--Groups-->
         <scene sceneID="DjR-dn-On9">
@@ -285,7 +286,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZw-t4-mKX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4144.927536231884" y="221.65178571428569"/>
+            <point key="canvasLocation" x="5053.6231884057979" y="221.65178571428569"/>
         </scene>
         <!--My Groups-->
         <scene sceneID="gVl-rI-Q8z">
@@ -302,7 +303,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qx0-8c-Wsf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2318.840579710145" y="221.65178571428569"/>
+            <point key="canvasLocation" x="3228.985507246377" y="221.65178571428569"/>
         </scene>
         <!--News-->
         <scene sceneID="rLL-XF-713">
@@ -470,14 +471,100 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nyO-xl-HbD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-246.37681159420291" y="740.625"/>
+            <point key="canvasLocation" x="-1043" y="749"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="NqN-dm-fl1">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="soR-iO-VfK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SYm-iO-gpm">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="EQc-pl-D0L" kind="relationship" relationship="viewControllers" id="tWA-VV-Joi"/>
+                        <segue destination="rzi-Jo-4Dk" kind="relationship" relationship="viewControllers" id="1Si-co-isN"/>
+                        <segue destination="XJX-68-gyn" kind="relationship" relationship="viewControllers" id="yJr-CR-ieQ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tbn-OE-L7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="570" y="870"/>
+        </scene>
+        <!--Photos-->
+        <scene sceneID="gU9-dx-fCf">
+            <objects>
+                <viewController id="XJX-68-gyn" customClass="VKPhotosViewController" customModule="__Lesson_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hfp-Jb-tda">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PWz-Rh-oTS">
+                                <rect key="frame" x="20" y="351" width="374" height="161"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CGL-7J-A8F">
+                                <rect key="frame" x="20" y="574" width="374" height="157"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oit-hh-e9Y">
+                                <rect key="frame" x="20" y="109" width="374" height="152"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="E9e-BV-atB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Photos" image="photo.tv" catalog="system" landscapeImage="photo.tv" selectedImage="photo.tv" id="kak-1r-sVH"/>
+                    <connections>
+                        <outlet property="photoOne" destination="oit-hh-e9Y" id="B22-4d-1jz"/>
+                        <outlet property="photoTree" destination="CGL-7J-A8F" id="8HE-xa-BSd"/>
+                        <outlet property="photoTwo" destination="PWz-Rh-oTS" id="N1N-3l-sdy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gOD-4L-Pt7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="582.60869565217399" y="1566.9642857142856"/>
+        </scene>
+        <!--Groups-->
+        <scene sceneID="F4T-mp-PXJ">
+            <objects>
+                <tableViewController id="rzi-Jo-4Dk" customClass="VKGroupsViewController" customModule="__Lesson_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="IP4-Vi-Wai">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="74b-Ek-Fnt">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="74b-Ek-Fnt" id="5Wd-H5-01W">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rzi-Jo-4Dk" id="Ey6-vK-qhu"/>
+                            <outlet property="delegate" destination="rzi-Jo-4Dk" id="bBd-D5-EGS"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Groups" image="person.3" catalog="system" landscapeImage="person.3" selectedImage="person.3" id="PgU-rl-Y7f"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="56r-FX-I0z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="1211"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="systemBlueColor"/>
     <resources>
         <image name="newspaper" catalog="system" width="128" height="111"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="photo.tv" catalog="system" width="128" height="97"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="vk" width="452" height="452"/>
         <namedColor name="AccentColor">

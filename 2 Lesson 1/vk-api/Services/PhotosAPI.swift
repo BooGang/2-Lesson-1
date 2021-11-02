@@ -7,9 +7,8 @@
 
 import Foundation
 import Alamofire
-struct Photos {
-    
-}
+import SwiftyJSON
+
 
 final class PhotosAPI {
     let baseURL = "https://api.vk.com/method"
@@ -17,7 +16,7 @@ final class PhotosAPI {
     let userId = Session.shared.userId
     let version = "5.81"
     
-    func getPhotos(completion: @escaping([Photos])->()) {
+    func getPhotos(completion: @escaping([Photo])->()) {
         let method = "/photos.get"
         
         let parameters: Parameters = [
@@ -33,8 +32,20 @@ final class PhotosAPI {
         let url = baseURL + method
         
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
-            print(response.value)
+            guard let data = response.data else {return}
             
+            debugPrint(response.data?.prettyJSON as Any)
+            
+            do {
+                let photosJSON = try JSONDecoder().decode(PhotosJSON.self, from: data)
+
+            
+                let photos: [Photo] = photosJSON.response.items
+                
+                completion(photos)
+            } catch {
+                print(error)
+            }
         }
     }
 }

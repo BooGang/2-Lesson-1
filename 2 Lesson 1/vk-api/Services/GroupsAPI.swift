@@ -7,8 +7,21 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
+//SwiftyJSON
 
-struct Groups {}
+struct Groups {
+    var id: Int = 0
+    var name: String = ""
+    var photo100: String = ""
+    
+    init(json: JSON){
+        self.id = json["id"].intValue
+        self.name = json["name"].string ?? ""
+        self.photo100 = json["photo_100"].string ?? ""
+        
+    }
+}
 
 final class GroupsAPI {
     let baseURL = "https://api.vk.com/method"
@@ -32,8 +45,22 @@ final class GroupsAPI {
         let url = baseURL + method
         
         AF.request(url, method: .get, parameters: parameters).responseJSON { response in
-            print(response.value)
             
+            guard let data = response.data else {return}
+            
+            
+            debugPrint(response.data?.prettyJSON)
+            
+            do {
+                guard let items = JSON(data)["response"]["items"].array else {return}
+                
+                let groups = items.map{Groups(json: $0)}
+                
+                completion(groups)
+            } catch {
+                print(error)
+            }
         }
     }
 }
+
